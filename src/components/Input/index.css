@@ -1,0 +1,64 @@
+.input {
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    position: relative;
+    margin-block: 42px;
+}
+
+.input-title {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    color: #000000;
+}
+
+.input-area {
+    display: flex;
+    width: 70%;
+    height: 30px;
+    padding: 17px 22px;
+    border: 1px solid #BCBEC0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    background: #F5F5F5;
+}
+
+.input-area::placeholder {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #BCBEC0;
+}
+
+.text-area {
+    display: flex;
+    width: 70%;
+    padding: 17px 22px;
+    border: 1px solid #BCBEC0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    background: #F5F5F5;
+}
+
+.text-area::placeholder {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #BCBEC0;
+}
+
+.text-area::-webkit-scrollbar {
+    display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button,
+textarea::-webkit-outer-spin-button,
+textarea::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
