@@ -1,10 +1,19 @@
 import React from 'react';
 import { useFormik, FormikProvider } from 'formik';
 import * as Yup from 'yup';
-import FormInput from '../../components/Input';
 import './index.css';
+import { collection, doc, setDoc } from 'firebase/firestore';
+import db from '../../firebase';
+import FormInput from '../../components/Input';
 
 function CreateApplicationPage() {
+  const applicationRef = doc(collection(db, 'applications'));
+
+  const handleUpload = async (payload) => {
+    const data = await setDoc(applicationRef, payload);
+    console.log(data);
+  };
+
   const tcRegExp = /^[1-9]{1}[0-9]{9}[02468]{1}$/;
 
   const SignupSchema = Yup.object().shape({
@@ -43,6 +52,7 @@ function CreateApplicationPage() {
     validationSchema: SignupSchema,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
+      handleUpload(values);
     },
   });
 
@@ -74,7 +84,6 @@ function CreateApplicationPage() {
           type="textarea"
           placeholder="Başvuru Nedeniniz"
           title="Başvuru Nedeniniz"
-          id="textarea"
           name="basvuru"
         />
         <button type="submit" className="submit">
