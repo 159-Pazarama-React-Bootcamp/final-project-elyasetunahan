@@ -1,44 +1,28 @@
 import React from 'react';
 import { useFormik, FormikProvider } from 'formik';
-import * as Yup from 'yup';
 import './index.css';
-import { collection, doc, setDoc } from 'firebase/firestore';
+import { collection, getDoc, doc, addDoc } from 'firebase/firestore';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { create } from '../../redux/createApplicationSlice';
 import db from '../../firebase';
+import createApplicationSchema from '../../validations/Application';
 import FormInput from '../../components/Input';
 
 function CreateApplicationPage() {
-  const applicationRef = doc(collection(db, 'applications'));
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleUpload = async (payload) => {
-    const data = await setDoc(applicationRef, payload);
-    console.log(data);
+    const docRef = await addDoc(collection(db, 'applications'), payload);
+    const applicationData = await getDoc(doc(db, 'applications', docRef.id));
+    if (applicationData.exists()) {
+      dispatch(create(applicationData.data()));
+      navigate('/basvuru-basarili');
+    } else {
+      console.log('Veri çekilirken hata oluştu.');
+    }
   };
-
-  const tcRegExp = /^[1-9]{1}[0-9]{9}[02468]{1}$/;
-
-  const SignupSchema = Yup.object().shape({
-    isim: Yup.string()
-      .min(2, 'İsminizi Doğru Giriniz')
-      .max(50, 'İsminiz 50 karakterden fazla olamaz')
-      .required('Bu alanı doldurmanız zorunludur'),
-    soyisim: Yup.string()
-      .min(2, 'Soyisminizi Doğru Giriniz')
-      .max(50, 'Soyisminiz 50 karakterden fazla olamaz')
-      .required('Bu alanı doldurmanız zorunludur'),
-    yas: Yup.number()
-      .max(120, 'Lütfen Gerçek Yaşınızı Giriniz')
-      .positive('Yaşınız pozitif değere sahip olmalıdır')
-      .required('Bu alanı doldurmanız zorunludur'),
-    tc: Yup.string()
-      .matches(tcRegExp, 'Kimlik Numarası Geçersiz')
-      .required('Bu alanı doldurmanız zorunludur'),
-    adres: Yup.string()
-      .min(12, 'Lütfen Adresinizi Doğru Giriniz')
-      .required('Bu alanı doldurmanız zorunludur'),
-    basvuru: Yup.string()
-      .min(10, 'Lütfen Basvurunuzu Doğru Açıklayınız')
-      .required('Bu alanı doldurmanız zorunludur'),
-  });
 
   const formik = useFormik({
     initialValues: {
@@ -49,9 +33,8 @@ function CreateApplicationPage() {
       adres: '',
       basvuru: '',
     },
-    validationSchema: SignupSchema,
+    validationSchema: createApplicationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
       handleUpload(values);
     },
   });
