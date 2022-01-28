@@ -1,3 +1,29 @@
+## Demo
+
+## Kullandığım Paketler
+
+- Axios
+- Redux Toolkit
+- Formik, Yup
+- Moment
+- React Icons
+
+## Kurulum
+
+Projeyi kendi bilgisayarınızda çalıştırmak istiyorsanız öncelikle projenin ana dizinine .env dosyası oluşturmalısınız.
+Sonrasında içerisini altta ki örnek gibi kendi firebase bilgileriniz ile doldurmalısınız.
+
+```
+REACT_APP_apiKey=
+REACT_APP_authDomain=
+REACT_APP_projectId=
+REACT_APP_storageBucket=
+REACT_APP_messagingSenderId=
+REACT_APP_appId=
+```
+
+Ardından önce npm install sonrasında npm run start yazarak projeyi ayağa kaldırabilirsiniz.
+
 ## Bitirme projesi
 
 ### Başvuru / ticket yönetim sistemi
@@ -75,3 +101,7 @@ Kullanıcı adı ve şifre ile girilebilen bir ekrandan da yetkili kullanıcıla
 - Service worker ile offline render destegi
 - Mobil uyumlulu guzel bir tasarim
 - Kullanilabilir UX
+
+```
+
+```
