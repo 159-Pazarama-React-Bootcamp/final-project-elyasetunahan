@@ -23,7 +23,7 @@ function AdminPage() {
           dispatch(setLoggedIn(true));
           navigate('/admin/basvuru-listesi');
         } else alert('Girdiğiniz Şifre Doğru değildir');
-      } else alert('Kullanıcı Bilgilerinizi Kontrol ediniz');
+      }
     });
   };
 
