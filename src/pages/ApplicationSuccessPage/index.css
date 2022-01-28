@@ -1,0 +1,36 @@
+.success-form {
+    background: #FFFFFF;
+    width: 600px;
+    padding: 40px 50px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 3px;
+}
+
+.success-title {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: green;
+}
+
+.success-icon {
+    margin-right: 5px;
+}
+
+.success-btn {
+    display: inline-block;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+    background: #316CBE;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 10px 25px;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-decoration: none;
+}
