@@ -26,4 +26,12 @@ const createApplicationSchema = Yup.object().shape({
     .required('Bu alanı doldurmanız zorunludur'),
 });
 
+export const checkApplicationSchema = Yup.object().shape({
+  code: Yup.string().required('Başvuru numaranızı doldurmanız zorunludur'),
+});
+
+export const createAnswerSchema = Yup.object().shape({
+  answer: Yup.string().required('Cevap doldurmanız zorunludur'),
+});
+
 export default createApplicationSchema;
