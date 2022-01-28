@@ -66,59 +66,61 @@ function AdminApplicationEditPage() {
   }
 
   return (
-    <div className="edit-wrapper">
-      <div className="application-info">
-        <h2>Başvuru Durumu</h2>
-        <SuccessDetail title="basvuru no" value={basvuruNo} />
-        <SuccessDetail title="isim" value={application.isim} />
-        <SuccessDetail title="soyisim" value={application.soyisim} />
-        <SuccessDetail title="yas" value={application.yas} />
-        <SuccessDetail title="tc" value={application.tc} />
-        <SuccessDetail title="adres" value={application.adres} />
-        <SuccessDetail title="basvuru" value={application.basvuru} />
-        {application.answers?.map((item) => (
-          <SuccessDetail key={item.id} title="Cevap" value={item.answer} />
-        ))}
-      </div>
+    <div>
+      <CustomButton
+        className="back"
+        onClick={() => navigate('/admin/basvuru-listesi')}
+      >
+        Listeleme Ekranına Dön
+      </CustomButton>
+      <div className="edit-wrapper">
+        <div className="application-info">
+          <h2>Başvuru Durumu</h2>
+          <SuccessDetail title="basvuru no" value={basvuruNo} />
+          <SuccessDetail title="isim" value={application.isim} />
+          <SuccessDetail title="soyisim" value={application.soyisim} />
+          <SuccessDetail title="yas" value={application.yas} />
+          <SuccessDetail title="tc" value={application.tc} />
+          <SuccessDetail title="adres" value={application.adres} />
+          <SuccessDetail title="basvuru" value={application.basvuru} />
+          {application.answers?.map((item) => (
+            <SuccessDetail key={item.id} title="Cevap" value={item.answer} />
+          ))}
+        </div>
 
-      <FormikProvider value={formik}>
-        <form onSubmit={formik.handleSubmit}>
-          <FormInput
-            type="text"
-            placeholder="Cevap"
-            title="Cevap"
-            name="answer"
-          />
+        <FormikProvider value={formik}>
+          <form onSubmit={formik.handleSubmit}>
+            <FormInput
+              type="text"
+              placeholder="Cevap"
+              title="Cevap"
+              name="answer"
+            />
 
-          <label className="select" htmlFor="slct">
-            <select
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
-              id="slct"
-            >
-              <option value="bekliyor">Bekliyor</option>
-              <option value="onaylandı">onaylandı</option>
-              <option value="reddedildi">reddedildi</option>
-            </select>
-            <svg>
-              <use xlinkHref="#select-arrow-down" />
+            <label className="select" htmlFor="slct">
+              <select
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+                id="slct"
+              >
+                <option value="bekliyor">Bekliyor</option>
+                <option value="onaylandı">Onaylandı</option>
+                <option value="reddedildi">Reddedildi</option>
+              </select>
+              <svg>
+                <use xlinkHref="#select-arrow-down" />
+              </svg>
+            </label>
+            <svg className="sprites">
+              <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                <polyline points="1 1 5 5 9 1" />
+              </symbol>
             </svg>
-          </label>
-          <svg className="sprites">
-            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-              <polyline points="1 1 5 5 9 1" />
-            </symbol>
-          </svg>
 
-          <CustomButton type="submit">Başvuruyu Güncelle</CustomButton>
-          <CustomButton
-            className="back"
-            onClick={() => navigate('/admin/basvuru-listesi')}
-          >
-            Listeleme Ekranına Dön
-          </CustomButton>
-        </form>
-      </FormikProvider>
+            <CustomButton type="submit">Başvuruyu Güncelle</CustomButton>
+          </form>
+        </FormikProvider>
+      </div>
     </div>
   );
 }

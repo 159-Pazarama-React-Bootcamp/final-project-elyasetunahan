@@ -52,25 +52,29 @@ function AdminApplicationListPage() {
       <div className="list-wrapper">
         {loading && <Spinner />}
 
-        {sortedApplications?.map((item) => (
-          <div key={item.id} className="app-list">
-            <p className="app-baslik">
-              {item.isim} {item.soyisim}
-            </p>
-            <div className="app-list-right">
-              <p className="app-tarih">
-                {moment(item.createdAt).format('DD/MM/YYYY')}
+        {sortedApplications.length < 1 ? (
+          <div>Hiçbir Başvuru Bulunamadı</div>
+        ) : (
+          sortedApplications.map((item) => (
+            <div key={item.id} className="app-list">
+              <p className="app-baslik">
+                {item.isim} {item.soyisim}
               </p>
-              <CustomButton
-                type="button"
-                className="listBtn"
-                onClick={() => onViewClick(item.id)}
-              >
-                Görüntüle
-              </CustomButton>
+              <div className="app-list-right">
+                <p className="app-tarih">
+                  {moment(item.createdAt).format('DD/MM/YYYY')}
+                </p>
+                <CustomButton
+                  type="button"
+                  className="listBtn"
+                  onClick={() => onViewClick(item.id)}
+                >
+                  Görüntüle
+                </CustomButton>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );
