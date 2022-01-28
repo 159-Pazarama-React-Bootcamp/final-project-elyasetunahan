@@ -1,0 +1,7 @@
+.form-wrapper {
+    background: #FFFFFF;
+    width: 600px;
+    padding: 40px 50px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 3px;
+}
