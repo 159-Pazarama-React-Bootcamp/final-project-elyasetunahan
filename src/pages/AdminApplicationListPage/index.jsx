@@ -7,6 +7,7 @@ import db from '../../firebase';
 import './index.css';
 import { logout, setApplications } from '../../redux/adminSlice';
 import CustomButton from '../../components/Button';
+import Spinner from '../../components/Spinner';
 
 function AdminApplicationListPage() {
   const [loading, setLoading] = useState(true);
@@ -49,7 +50,7 @@ function AdminApplicationListPage() {
         Logout
       </CustomButton>
       <div className="list-wrapper">
-        {loading && <div>Loading</div>}
+        {loading && <Spinner />}
 
         {sortedApplications?.map((item) => (
           <div key={item.id} className="app-list">

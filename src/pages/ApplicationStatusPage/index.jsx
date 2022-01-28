@@ -4,6 +4,7 @@ import './index.css';
 import { Link, useParams } from 'react-router-dom';
 import SuccessDetail from '../../components/Success';
 import db from '../../firebase';
+import Spinner from '../../components/Spinner';
 
 function ApplicationStatusPage() {
   const { basvuruNo } = useParams();
@@ -26,7 +27,7 @@ function ApplicationStatusPage() {
   }, []);
 
   if (loading) {
-    return <div>spinner</div>;
+    return <Spinner />;
   }
 
   if (!application) {
@@ -37,13 +38,13 @@ function ApplicationStatusPage() {
     <div className="status-wrapper">
       <h2> Başvuru Durumu</h2>
       <SuccessDetail title="basvuru no" value={basvuruNo} />
-      <SuccessDetail title="isim" value={application.isim} />
-      <SuccessDetail title="soyisim" value={application.soyisim} />
-      <SuccessDetail title="yas" value={application.yas} />
-      <SuccessDetail title="tc" value={application.tc} />
-      <SuccessDetail title="adres" value={application.adres} />
-      <SuccessDetail title="Başvuru" value={application.basvuru} />
-      <SuccessDetail title="status" value={application.status} />
+      <SuccessDetail title="İsminiz" value={application.isim} />
+      <SuccessDetail title="Soyisminiz" value={application.soyisim} />
+      <SuccessDetail title="Yaşınız" value={application.yas} />
+      <SuccessDetail title="TC Kimlik No" value={application.tc} />
+      <SuccessDetail title="Adresiniz" value={application.adres} />
+      <SuccessDetail title="Başvurunuz" value={application.basvuru} />
+      <SuccessDetail title="Mevcut Statü" value={application.status} />
       {application.answers?.map((item) => (
         <SuccessDetail key={item.id} title="Cevap" value={item.answer} />
       ))}

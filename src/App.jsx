@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import LoggedRoute from './components/LoggedRoute';
 import PrivateRoute from './components/PrivateRoute';
+import Spinner from './components/Spinner';
 import db from './firebase';
 import {
   AdminPage,
@@ -43,7 +44,7 @@ function App() {
   }, []);
 
   if (loading) {
-    return <div>Loading</div>;
+    return <Spinner />;
   }
 
   return (

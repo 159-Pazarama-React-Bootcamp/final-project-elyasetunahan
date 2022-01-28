@@ -15,12 +15,12 @@ function ApplicationSuccessPage() {
         Başvurunuz Başarıyla Alınmıştır
       </div>
       <SuccessDetail title="Basvuru no" value={application.id} />
-      <SuccessDetail title="isim" value={application.isim} />
-      <SuccessDetail title="soyisim" value={application.soyisim} />
-      <SuccessDetail title="yas" value={application.yas} />
-      <SuccessDetail title="tc" value={application.tc} />
-      <SuccessDetail title="adres" value={application.adres} />
-      <SuccessDetail title="basvuru" value={application.basvuru} />
+      <SuccessDetail title="İsminiz" value={application.isim} />
+      <SuccessDetail title="Soyisminiz" value={application.soyisim} />
+      <SuccessDetail title="Yaşınız" value={application.yas} />
+      <SuccessDetail title="TC Kimlik No" value={application.tc} />
+      <SuccessDetail title="Adresiniz" value={application.adres} />
+      <SuccessDetail title="Başvurunuz" value={application.basvuru} />
       <Link to="/basvuru-sorgula" className="success-btn">
         Farklı Başvuru Sorgula
       </Link>

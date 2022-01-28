@@ -8,6 +8,7 @@ import db from '../../firebase';
 import { createAnswerSchema } from '../../validations/Application';
 import SuccessDetail from '../../components/Success';
 import CustomButton from '../../components/Button';
+import Spinner from '../../components/Spinner';
 
 function AdminApplicationEditPage() {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ function AdminApplicationEditPage() {
   });
 
   if (loading) {
-    return <div>Loading</div>;
+    return <Spinner />;
   }
 
   if (!application) {
