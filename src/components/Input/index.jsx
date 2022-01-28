@@ -3,6 +3,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 import './index.css';
 import PropTypes from 'prop-types';
 import { useField } from 'formik';
+import { BiMessageAltError } from 'react-icons/bi';
 
 function FormInput({ title, type, ...props }) {
   const [field, meta] = useField(props);
@@ -20,7 +21,9 @@ function FormInput({ title, type, ...props }) {
         <input type={type} className="input-area" {...field} {...props} />
       )}
       {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
+        <div className="error">
+          <BiMessageAltError /> {meta.error}
+        </div>
       ) : null}
     </div>
   );
