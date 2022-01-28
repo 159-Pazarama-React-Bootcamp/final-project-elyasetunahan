@@ -1,5 +1,7 @@
 ## Demo
 
+[link](https://pazarama-final-elyase.netlify.app/)
+
 ## Kullandığım Paketler
 
 - Axios
