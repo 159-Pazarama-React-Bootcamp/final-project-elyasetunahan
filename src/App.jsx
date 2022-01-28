@@ -1,5 +1,10 @@
-import React from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import LoggedRoute from './components/LoggedRoute';
+import PrivateRoute from './components/PrivateRoute';
+import db from './firebase';
 import {
   AdminPage,
   AdminApplicationEditPage,
@@ -9,8 +14,38 @@ import {
   CheckApplicationPage,
   CreateApplicationPage,
 } from './pages';
+import { setLoggedIn } from './redux/adminSlice';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+
+  const checkAdmin = async () => {
+    const username = localStorage.getItem('username');
+    const password = localStorage.getItem('password');
+
+    if (!username || !password) {
+      dispatch(setLoggedIn(false));
+    } else {
+      const querySnapshot = await getDocs(collection(db, 'admin'));
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.username === username && data.password === password) {
+          dispatch(setLoggedIn(true));
+        }
+      });
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    checkAdmin();
+  }, []);
+
+  if (loading) {
+    return <div>Loading</div>;
+  }
+
   return (
     <BrowserRouter>
       <Routes>
@@ -19,16 +54,21 @@ function App() {
         <Route path="/basvuru-basarili" element={<ApplicationSuccessPage />} />
         <Route path="/basvuru-sorgula" element={<CheckApplicationPage />} />
         <Route path="/basvuru/:basvuruNo" element={<ApplicationStatusPage />} />
-        <Route path="/admin" element={<AdminPage />} />
-        <Route
-          path="/admin/basvuru-listesi"
-          element={<AdminApplicationListPage />}
-        />
 
-        <Route
-          path="/admin/basvuru/:basvuruNo"
-          element={<AdminApplicationEditPage />}
-        />
+        <Route element={<LoggedRoute />}>
+          <Route path="/admin" element={<AdminPage />} />
+        </Route>
+
+        <Route element={<PrivateRoute />}>
+          <Route
+            path="/admin/basvuru-listesi"
+            element={<AdminApplicationListPage />}
+          />
+          <Route
+            path="/admin/basvuru/:basvuruNo"
+            element={<AdminApplicationEditPage />}
+          />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
