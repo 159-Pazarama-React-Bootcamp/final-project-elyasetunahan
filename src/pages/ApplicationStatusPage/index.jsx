@@ -1,10 +1,11 @@
 import { doc, getDoc } from 'firebase/firestore';
-import React, { useState, useEffect } from 'react';
-import './index.css';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import SuccessDetail from '../../components/Success';
-import db from '../../firebase';
 import Spinner from '../../components/Spinner';
+import SuccessDetail from '../../components/Success';
+import Wrapper from '../../components/Wrapper';
+import db from '../../firebase';
+import './index.css';
 
 function ApplicationStatusPage() {
   const { basvuruNo } = useParams();
@@ -35,7 +36,7 @@ function ApplicationStatusPage() {
   }
 
   return (
-    <div className="status-wrapper">
+    <Wrapper>
       <h2> Başvuru Durumu</h2>
       <SuccessDetail title="basvuru no" value={basvuruNo} />
       <SuccessDetail title="İsminiz" value={application.isim} />
@@ -51,7 +52,7 @@ function ApplicationStatusPage() {
       <Link to="/basvuru-sorgula" className="success-btn">
         Farklı Başvuru Sorgula
       </Link>
-    </div>
+    </Wrapper>
   );
 }
 export default ApplicationStatusPage;

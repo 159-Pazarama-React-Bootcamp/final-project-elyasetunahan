@@ -1,13 +1,14 @@
 import { collection, getDocs } from 'firebase/firestore';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
-import db from '../../firebase';
-import './index.css';
-import { logout, setApplications } from '../../redux/adminSlice';
 import CustomButton from '../../components/Button';
 import Spinner from '../../components/Spinner';
+import Wrapper from '../../components/Wrapper';
+import db from '../../firebase';
+import { logout, setApplications } from '../../redux/adminSlice';
+import './index.css';
 
 function AdminApplicationListPage() {
   const [loading, setLoading] = useState(true);
@@ -49,7 +50,7 @@ function AdminApplicationListPage() {
       >
         Logout
       </CustomButton>
-      <div className="list-wrapper">
+      <Wrapper className="list-wrapper">
         {loading && <Spinner />}
 
         {sortedApplications.length < 1 ? (
@@ -75,7 +76,7 @@ function AdminApplicationListPage() {
             </div>
           ))
         )}
-      </div>
+      </Wrapper>
     </div>
   );
 }

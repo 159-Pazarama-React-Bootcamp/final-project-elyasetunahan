@@ -1,8 +1,9 @@
 import React from 'react';
+import { BsCheck2Circle } from 'react-icons/bs';
 import { useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
-import { BsCheck2Circle } from 'react-icons/bs';
 import SuccessDetail from '../../components/Success';
+import Wrapper from '../../components/Wrapper';
 import './index.css';
 
 function ApplicationSuccessPage() {
@@ -13,7 +14,7 @@ function ApplicationSuccessPage() {
   }
 
   return (
-    <div className="success-form">
+    <Wrapper>
       <div className="success-title">
         <BsCheck2Circle className="success-icon" />
         Başvurunuz Başarıyla Alınmıştır
@@ -28,7 +29,7 @@ function ApplicationSuccessPage() {
       <Link to="/basvuru-sorgula" className="success-btn">
         Farklı Başvuru Sorgula
       </Link>
-    </div>
+    </Wrapper>
   );
 }
 

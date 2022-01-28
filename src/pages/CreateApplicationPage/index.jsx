@@ -1,14 +1,15 @@
+import { addDoc, collection, doc, getDoc } from 'firebase/firestore';
+import { FormikProvider, useFormik } from 'formik';
 import React from 'react';
-import { useFormik, FormikProvider } from 'formik';
-import './index.css';
-import { collection, getDoc, doc, addDoc } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { create } from '../../redux/createApplicationSlice';
-import db from '../../firebase';
-import createApplicationSchema from '../../validations/Application';
-import FormInput from '../../components/Input';
 import CustomButton from '../../components/Button';
+import FormInput from '../../components/Input';
+import Wrapper from '../../components/Wrapper';
+import db from '../../firebase';
+import { create } from '../../redux/createApplicationSlice';
+import createApplicationSchema from '../../validations/Application';
+import './index.css';
 
 function CreateApplicationPage() {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ function CreateApplicationPage() {
 
   return (
     <FormikProvider value={formik}>
-      <div className="create-wrapper">
+      <Wrapper>
         <form onSubmit={formik.handleSubmit}>
           <h2>Başvuru Oluştur</h2>
           <FormInput
@@ -93,7 +94,7 @@ function CreateApplicationPage() {
           />
           <CustomButton type="submit">Gönder</CustomButton>
         </form>
-      </div>
+      </Wrapper>
     </FormikProvider>
   );
 }

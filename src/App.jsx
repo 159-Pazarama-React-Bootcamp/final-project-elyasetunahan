@@ -1,15 +1,15 @@
 import { collection, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import LoggedRoute from './components/LoggedRoute';
 import PrivateRoute from './components/PrivateRoute';
 import Spinner from './components/Spinner';
 import db from './firebase';
 import {
-  AdminPage,
   AdminApplicationEditPage,
   AdminApplicationListPage,
+  AdminPage,
   ApplicationStatusPage,
   ApplicationSuccessPage,
   CheckApplicationPage,

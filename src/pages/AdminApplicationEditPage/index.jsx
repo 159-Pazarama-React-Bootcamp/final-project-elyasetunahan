@@ -1,14 +1,15 @@
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { FormikProvider, useFormik } from 'formik';
-import React, { useState, useEffect } from 'react';
-import './index.css';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import CustomButton from '../../components/Button';
 import FormInput from '../../components/Input';
+import Spinner from '../../components/Spinner';
+import SuccessDetail from '../../components/Success';
+import Wrapper from '../../components/Wrapper';
 import db from '../../firebase';
 import { createAnswerSchema } from '../../validations/Application';
-import SuccessDetail from '../../components/Success';
-import CustomButton from '../../components/Button';
-import Spinner from '../../components/Spinner';
+import './index.css';
 
 function AdminApplicationEditPage() {
   const navigate = useNavigate();
@@ -73,7 +74,7 @@ function AdminApplicationEditPage() {
       >
         Listeleme Ekranına Dön
       </CustomButton>
-      <div className="edit-wrapper">
+      <Wrapper className="edit-wrapper">
         <div className="application-info">
           <h2>Başvuru Durumu</h2>
           <SuccessDetail title="basvuru no" value={basvuruNo} />
@@ -120,7 +121,7 @@ function AdminApplicationEditPage() {
             <CustomButton type="submit">Başvuruyu Güncelle</CustomButton>
           </form>
         </FormikProvider>
-      </div>
+      </Wrapper>
     </div>
   );
 }

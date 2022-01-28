@@ -1,10 +1,11 @@
 import { FormikProvider, useFormik } from 'formik';
 import React from 'react';
-import './index.css';
 import { useNavigate } from 'react-router-dom';
-import FormInput from '../../components/Input';
-import { checkApplicationSchema } from '../../validations/Application';
 import CustomButton from '../../components/Button';
+import FormInput from '../../components/Input';
+import Wrapper from '../../components/Wrapper';
+import { checkApplicationSchema } from '../../validations/Application';
+import './index.css';
 
 function CheckApplicationPage() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function CheckApplicationPage() {
 
   return (
     <FormikProvider value={formik}>
-      <div className="check-wrapper">
+      <Wrapper>
         <form onSubmit={formik.handleSubmit}>
           <h2>Başvuru Sorgulama Ekranı</h2>
           <FormInput
@@ -29,7 +30,7 @@ function CheckApplicationPage() {
           />
           <CustomButton type="submit">Sorgula</CustomButton>
         </form>
-      </div>
+      </Wrapper>
     </FormikProvider>
   );
 }

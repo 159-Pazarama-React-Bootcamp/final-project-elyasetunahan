@@ -1,7 +1,7 @@
-import React from 'react';
-import './index.css';
 import PropTypes from 'prop-types';
+import React from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
+import './index.css';
 
 function SuccessDetail({ title, value }) {
   return (

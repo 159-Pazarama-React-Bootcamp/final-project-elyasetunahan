@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { useDropzone } from 'react-dropzone';
 
 function DragDrop({ title, onDrop }) {

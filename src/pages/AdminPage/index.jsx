@@ -1,14 +1,14 @@
 import { collection, getDocs } from 'firebase/firestore';
 import { FormikProvider, useFormik } from 'formik';
 import React from 'react';
-import './index.css';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import FormInput from '../../components/Input';
-import db from '../../firebase';
-import loginSchema from '../../validations/Admin';
-import { setLoggedIn } from '../../redux/adminSlice';
+import { useNavigate } from 'react-router-dom';
 import CustomButton from '../../components/Button';
+import FormInput from '../../components/Input';
+import Wrapper from '../../components/Wrapper';
+import db from '../../firebase';
+import { setLoggedIn } from '../../redux/adminSlice';
+import loginSchema from '../../validations/Admin';
 
 function AdminPage() {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ function AdminPage() {
 
   return (
     <FormikProvider value={formik}>
-      <div className="form-wrapper">
+      <Wrapper>
         <form onSubmit={formik.handleSubmit}>
           <FormInput
             name="username"
@@ -54,7 +54,7 @@ function AdminPage() {
           />
           <CustomButton type="submit">Giriş Yap</CustomButton>
         </form>
-      </div>
+      </Wrapper>
     </FormikProvider>
   );
 }

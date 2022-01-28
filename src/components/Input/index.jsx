@@ -1,9 +1,9 @@
+import { useField } from 'formik';
+import PropTypes from 'prop-types';
 import React from 'react';
+import { BiMessageAltError } from 'react-icons/bi';
 import TextareaAutosize from 'react-textarea-autosize';
 import './index.css';
-import PropTypes from 'prop-types';
-import { useField } from 'formik';
-import { BiMessageAltError } from 'react-icons/bi';
 
 function FormInput({ title, type, ...props }) {
   const [field, meta] = useField(props);
