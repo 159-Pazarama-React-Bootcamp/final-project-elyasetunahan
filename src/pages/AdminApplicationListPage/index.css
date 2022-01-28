@@ -1,0 +1,62 @@
+.list-wrapper {
+    background: #FFFFFF;
+    width: 60vw;
+    height: 75vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 40px 50px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.app-list {
+    display: flex;
+    width: 100%;
+    background: #ffffff;
+    position: relative;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #d3d3d3;
+    border-radius: 3px;
+    text-transform: capitalize;
+    padding: 5px 10px;
+}
+
+.app-list-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 10px;
+}
+
+
+.logout {
+    float: right;
+    margin-left: 15px;
+    background: red;
+    cursor: point
+}
+
+.listBtn {
+    margin-top: 0;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #316CBE;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
