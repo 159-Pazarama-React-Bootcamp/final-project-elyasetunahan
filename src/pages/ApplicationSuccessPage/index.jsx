@@ -1,12 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { BsCheck2Circle } from 'react-icons/bs';
 import SuccessDetail from '../../components/Success';
 import './index.css';
 
 function ApplicationSuccessPage() {
   const { application } = useSelector((state) => state.createApplication);
+
+  if (!application) {
+    return <Navigate to="/basvuru-olustur" />;
+  }
 
   return (
     <div className="success-form">
