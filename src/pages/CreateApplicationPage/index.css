@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: #F5F7FB;
+}
+
+form {
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+    font-size: 34px;
+    color: #222;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.submit {
+    margin-top: 15px;
+    font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+    background: #316CBE;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 10px 25px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
